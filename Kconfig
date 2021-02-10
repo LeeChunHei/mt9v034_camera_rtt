@@ -17,8 +17,8 @@ if PKG_USING_MT9V034_CAMERA
         help
             Select the package version
 
-        config PKG_USING_MT9V034_CAMERA_V100
-            bool "v1.0.0"
+        config PKG_USING_MT9V034_CAMERA_V101
+            bool "v1.0.1"
 
         config PKG_USING_MT9V034_CAMERA_LATEST_VERSION
             bool "latest"
@@ -26,7 +26,7 @@ if PKG_USING_MT9V034_CAMERA
           
     config PKG_MT9V034_CAMERA_VER
        string
-       default "v1.0.0"    if PKG_USING_MT9V034_CAMERA_V100
+       default "v1.0.1"    if PKG_USING_MT9V034_CAMERA_V101
        default "latest"    if PKG_USING_MT9V034_CAMERA_LATEST_VERSION
 
     config PKG_MT9V034_FPS
