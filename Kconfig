@@ -50,6 +50,7 @@ if PKG_USING_MT9V034_CAMERA
             bool "80dB HDR"
         config PKG_MT9V034_HDR_100DB
             bool "100dB HDR"
+    endchoice
     
     config PKG_MT9V034_FRAME_WIDTH
         int "Width"
