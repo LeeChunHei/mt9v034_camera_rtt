@@ -1,0 +1,74 @@
+
+# Kconfig file for package mt9v034_camera
+menuconfig PKG_USING_MT9V034_CAMERA
+    bool "MT9V034 camera driver package"
+    default n
+
+if PKG_USING_MT9V034_CAMERA
+
+    config PKG_MT9V034_CAMERA_PATH
+        string
+        default "/packages/peripherals/sensors/mt9v034_camera"
+
+    choice
+        prompt "Version"
+        default PKG_USING_MT9V034_CAMERA_LATEST_VERSION
+        help
+            Select the package version
+
+        config PKG_USING_MT9V034_CAMERA_V100
+            bool "v1.0.0"
+
+        config PKG_USING_MT9V034_CAMERA_LATEST_VERSION
+            bool "latest"
+    endchoice
+          
+    config PKG_MT9V034_CAMERA_VER
+       string
+       default "v1.0.0"    if PKG_USING_MT9V034_CAMERA_V100
+       default "latest"    if PKG_USING_MT9V034_CAMERA_LATEST_VERSION
+
+    config PKG_MT9V034_FPS
+        int "Frame Per Second"
+        default 200
+
+    config PKG_MT9V034_ENABLE_AEC
+        bool "Enable auto explosure control"
+        default n
+    
+    config PKG_MT9V034_ENABLE_AGC
+        bool "Enable auto gain control"
+        default n
+
+    choice
+        prompt "HDR"
+        default PKG_MT9V034_HDR_DISABLE
+        config PKG_MT9V034_HDR_DISABLE
+            bool "No HDR"
+        config PKG_MT9V034_HDR_80DB
+            bool "80dB HDR"
+        config PKG_MT9V034_HDR_100DB
+            bool "100dB HDR"
+    
+    config PKG_MT9V034_FRAME_WIDTH
+        int "Width"
+        default 752
+        help
+            The width of the camera image, beware that it needs to be divisible by 8
+    
+    config PKG_MT9V034_FRAME_HEIGHT
+        int "Height"
+        default 480
+        help
+            The height of the camera image, beware that it needs to be divisible by 8
+    
+    config PKG_MT9V034_I2C_BUS_NAME
+        string "Camera configuration I2C/SCCB bus name"
+        default "i2c10"
+    
+    config PKG_MT9V034_ASSERT_ON_FAIL
+        bool "Assert the program when faced configuration failure"
+        default n
+
+endif
+
